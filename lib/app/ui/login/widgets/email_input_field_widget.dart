@@ -8,7 +8,7 @@ class EmailInputFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        hintText: 'vendedor@gmail.com',
+        hintText: 'vendedor@empresa.com',
         hintStyle: TextStyle(color: AppColors.degraded),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
       ),

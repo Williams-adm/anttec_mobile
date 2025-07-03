@@ -1,6 +1,7 @@
 import 'package:anttec_mobile/app/ui/login/widgets/email_input_field_widget.dart';
 import 'package:anttec_mobile/core/styles/colors.dart';
 import 'package:anttec_mobile/core/styles/texts.dart';
+import 'package:anttec_mobile/core/styles/titles.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Card(
+            color: AppColors.primaryS,
             margin: EdgeInsets.all(30),
             elevation: 3,
             child: Padding(
@@ -20,11 +22,12 @@ class LoginScreen extends StatelessWidget {
               child: Form(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Iniciar Sesión", style: AppTexts.h1),
-                    Text("Correo Electrónico", style: AppTexts.h3),
+                    Text("Iniciar Sesión", style: AppTitles.login),
+                    Text("Correo Electrónico", style: AppTitles.h3),
                     EmailInputFieldWidget(),
-                    Text("Contraseña", style: AppTexts.h3),
+                    Text("Contraseña", style: AppTitles.h3),
                     TextFormField(),
                     Row(
                       children: [
@@ -32,9 +35,19 @@ class LoginScreen extends StatelessWidget {
                         Checkbox(value: false, onChanged: null),
                       ],
                     ),
-                    TextButton(
-                      onPressed: null,
-                      child: Text("INGRESAR", style: AppTexts.login),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryP,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 30.0,
+                          vertical: 10.0,
+                        ),
+                      ),
+                      child: Text(
+                        "Ingresar",
+                        style: AppTitles.h1.copyWith(color: AppColors.primaryS),
+                      ),
                     ),
                   ],
                 ),

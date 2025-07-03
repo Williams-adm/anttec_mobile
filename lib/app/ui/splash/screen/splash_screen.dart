@@ -11,7 +11,7 @@ class SplashBackground extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [AppColors.primary, AppColors.degraded],
+          colors: [AppColors.primaryP, AppColors.degraded],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
