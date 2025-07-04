@@ -1,48 +1,61 @@
 import 'package:anttec_mobile/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
-class EmailInputFieldDesign extends StatelessWidget {
+class PasswordInputFieldDesign extends StatelessWidget {
   final Color backgroundColor;
   final TextEditingController controller;
+  final bool changeIcon;
+  final VoidCallback onchangeVisibility;
 
-  const EmailInputFieldDesign({
+  const PasswordInputFieldDesign({
     super.key,
     required this.backgroundColor,
     required this.controller,
+    required this.changeIcon,
+    required this.onchangeVisibility,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      obscureText: changeIcon,
       decoration: InputDecoration(
-        hintText: 'vendedor@empresa.com',
+        hintText: '**********',
         hintStyle: TextStyle(color: AppColors.semidarkT),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.0)),
         filled: true,
         fillColor: backgroundColor,
+        suffixIcon: IconButton(
+          icon: Icon(changeIcon ? Icons.visibility_off : Icons.visibility),
+          onPressed: onchangeVisibility,
+        ),
       ),
     );
   }
 }
 
-class EmailInputFieldWidget extends StatefulWidget {
-  const EmailInputFieldWidget({super.key});
+class PasswordInputFieldWidget extends StatefulWidget {
+  const PasswordInputFieldWidget({super.key});
 
   @override
-  EmailInputFieldWidgetState createState() => EmailInputFieldWidgetState();
+  PasswordInputFieldWidgetState createState() =>
+      PasswordInputFieldWidgetState();
 }
 
 /// Gestiona el estado para el cambio de color del campo de entrada
-class EmailInputFieldWidgetState extends State<EmailInputFieldWidget> {
+class PasswordInputFieldWidgetState extends State<PasswordInputFieldWidget> {
   Color _bgColor = Colors.transparent; // color inicial
   final TextEditingController _controller = TextEditingController();
+  bool _changeIcon = true;
 
   @override
   Widget build(BuildContext context) {
-    return EmailInputFieldDesign(
+    return PasswordInputFieldDesign(
       backgroundColor: _bgColor,
       controller: _controller,
+      changeIcon: _changeIcon,
+      onchangeVisibility: _ontoggleVisibility,
     );
   }
 
@@ -63,6 +76,12 @@ class EmailInputFieldWidgetState extends State<EmailInputFieldWidget> {
             ? Colors.transparent
             : AppColors.tertiaryS;
       });
+    });
+  }
+
+  void _ontoggleVisibility() {
+    setState(() {
+      _changeIcon = !_changeIcon;
     });
   }
 }

@@ -1,3 +1,4 @@
+import 'package:anttec_mobile/core/styles/colors.dart';
 import 'package:anttec_mobile/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'ANTTEC',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryP),
       ),
       routerConfig: router,
     );
