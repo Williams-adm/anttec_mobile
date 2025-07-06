@@ -5,7 +5,7 @@ class AppColors {
   static const Color primaryP = Color(0xff753089); //P-800
   static const Color secondaryP = Color(0xff803398); //P-700
   static const Color tertiaryP = Color(0xffDFB8EF); //P-300
-  static const Color background = Color(0xffF6ECFB); //P-50
+  static const Color background = Color(0xffFBF6FD); //P-100 (F6ECFB)
   static const Color degraded = Color(0xff1E0C23); //P-950
 
   /// S hace referencia a los colores secundarios
