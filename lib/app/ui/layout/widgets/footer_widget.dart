@@ -1,5 +1,6 @@
 import 'package:anttec_mobile/core/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 class FooterWidget extends StatelessWidget {
@@ -7,6 +8,7 @@ class FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String? currentRouteName = GoRouterState.of(context).name;
     return Stack(
       alignment: Alignment.topCenter,
       clipBehavior: Clip.none,
@@ -24,7 +26,11 @@ class FooterWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (currentRouteName != 'home') {
+                        context.goNamed('home');
+                      }
+                    },
                     icon: Icon(Symbols.home, size: 48.0),
                   ),
                   const SizedBox(width: 90.0), // espacio para el botón central
@@ -40,7 +46,11 @@ class FooterWidget extends StatelessWidget {
         Positioned(
           top: -20,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              if (currentRouteName != 'scan-bar') {
+                context.pushNamed('scan-bar');
+              }
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryP,
               padding: EdgeInsets.all(12.0),

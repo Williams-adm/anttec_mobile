@@ -1,5 +1,6 @@
 import 'package:anttec_mobile/app/ui/home/screens/home_screen.dart';
 import 'package:anttec_mobile/app/ui/login/screen/login_screen.dart';
+import 'package:anttec_mobile/app/ui/scan/screen/scan_bar_screen.dart';
 import 'package:anttec_mobile/app/ui/splash/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -25,6 +26,13 @@ final GoRouter router = GoRouter(
       path: '/home',
       builder: (BuildContext context, GoRouterState state) {
         return const HomeScreen();
+      },
+    ),
+    GoRoute(
+      name: 'scan-bar',
+      path: '/scan-bar',
+      builder: (BuildContext context, GoRouterState state) {
+        return const ScanBarScreen();
       },
     ),
   ],
