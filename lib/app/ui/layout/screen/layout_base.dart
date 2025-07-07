@@ -8,8 +8,12 @@ import 'package:flutter/material.dart';
 
 class LayoutBase extends StatelessWidget {
   final Widget content;
-
-  const LayoutBase({super.key, required this.content});
+  final String selectedCategory;
+  const LayoutBase({
+    super.key,
+    required this.content,
+    required this.selectedCategory,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,7 @@ class LayoutBase extends StatelessWidget {
             children: [
               HeaderWidget(),
               SearchWidget(),
-              CategoryFilterBarWidget(),
+              CategoryFilterBarWidget(selectedCategory: selectedCategory),
               SectionTitleWidget(),
               Expanded(child: content),
               FooterWidget(),

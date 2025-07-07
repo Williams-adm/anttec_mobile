@@ -1,6 +1,7 @@
 import 'package:anttec_mobile/core/styles/colors.dart';
 import 'package:anttec_mobile/core/styles/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 class SectionTitleWidget extends StatelessWidget {
@@ -21,7 +22,9 @@ class SectionTitleWidget extends StatelessWidget {
             style: AppTexts.body1M.copyWith(color: AppColors.extradarkT),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed('filters', extra: {'title': 'Filtros'});
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.secondaryS,
               padding: EdgeInsets.only(left: 12.0, right: 6.0),

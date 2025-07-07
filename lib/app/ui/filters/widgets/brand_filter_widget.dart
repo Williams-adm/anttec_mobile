@@ -1,14 +1,13 @@
-import 'package:anttec_mobile/core/constants/categories.dart';
+import 'package:anttec_mobile/core/constants/brands.dart';
 import 'package:anttec_mobile/core/styles/colors.dart';
 import 'package:anttec_mobile/core/styles/texts.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-class CategoryFilterBarDesign extends StatelessWidget {
+class BrandFilterBarDesign extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onSelected;
 
-  const CategoryFilterBarDesign({
+  const BrandFilterBarDesign({
     super.key,
     required this.selectedIndex,
     required this.onSelected,
@@ -21,7 +20,7 @@ class CategoryFilterBarDesign extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: List.generate(categories.length, (index) {
+          children: List.generate(brands.length, (index) {
             final bool isSelected = index == selectedIndex;
             return Padding(
               padding: const EdgeInsets.only(right: 14.0),
@@ -35,7 +34,7 @@ class CategoryFilterBarDesign extends StatelessWidget {
                   ),
                 ),
                 child: ChoiceChip(
-                  label: Text(categories[index]),
+                  label: Text(brands[index]),
                   selected: isSelected,
                   onSelected: (_) => onSelected(index),
                   selectedColor: AppColors.secondaryP,
@@ -54,32 +53,25 @@ class CategoryFilterBarDesign extends StatelessWidget {
   }
 }
 
-class CategoryFilterBarWidget extends StatelessWidget {
-  final String selectedCategory;
-
-  const CategoryFilterBarWidget({super.key, required this.selectedCategory});
+class BrandFilterBarWidget extends StatefulWidget {
+  const BrandFilterBarWidget({super.key});
 
   @override
+  State<BrandFilterBarWidget> createState() => _BrandFilterBarWidgetState();
+}
+
+/// Gestiona los estados
+class _BrandFilterBarWidgetState extends State<BrandFilterBarWidget> {
+  int selectedBrandIndex = -1;
+  @override
   Widget build(BuildContext context) {
-    return CategoryFilterBarDesign(
-      selectedIndex: _getCategoryIndex(),
-      onSelected: (int index) => _onCategorySelected(context, index),
+    return BrandFilterBarDesign(
+      selectedIndex: selectedBrandIndex,
+      onSelected: (int index) {
+        setState(() {
+          selectedBrandIndex = index;
+        });
+      },
     );
-  }
-
-  int _getCategoryIndex() {
-    final index = categories.indexWhere(
-      (c) => c.toLowerCase() == selectedCategory.toLowerCase(),
-    );
-    return index < 0 ? 0 : index;
-  }
-
-  void _onCategorySelected(BuildContext context, int index) {
-    final selected = categories[index].toLowerCase();
-    if (selected == 'todos') {
-      context.goNamed('home');
-    } else {
-      context.goNamed('home-category', pathParameters: {'category': selected});
-    }
   }
 }

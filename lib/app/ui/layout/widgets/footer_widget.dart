@@ -48,7 +48,7 @@ class FooterWidget extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               if (currentRouteName != 'scan-bar') {
-                context.pushNamed('scan-bar');
+                context.pushNamed('scan-bar', extra: {'title': 'Escanear'});
               }
             },
             style: ElevatedButton.styleFrom(

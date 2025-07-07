@@ -65,6 +65,9 @@ flutter:
     - assets/img/prueba/p-logitechG335.jpg
     - assets/img/prueba/p-lenovoM11.jpg
     - assets/img/prueba/p-havitMs61wb.jpg
+    - assets/img/prueba/p-logitechG513.jpg
+    - assets/img/prueba/p-razerOrnata.jpg
+    - assets/img/prueba/p-redragonShiva.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
