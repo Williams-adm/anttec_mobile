@@ -39,17 +39,17 @@ class AppTexts {
   /// Textos en general Medium ( M )
   static const body1M = TextStyle(
     fontSize: 18,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
     color: AppColors.extradarkT,
   );
   static const body2M = TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
     color: AppColors.extradarkT,
   );
   static const body3M = TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
     color: AppColors.extradarkT,
   );
 }
