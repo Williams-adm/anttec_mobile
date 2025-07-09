@@ -1,6 +1,7 @@
 import 'package:anttec_mobile/app/ui/layout/widgets/profile_widget.dart';
 import 'package:anttec_mobile/core/styles/titles.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -33,7 +34,9 @@ class HeaderWidget extends StatelessWidget {
         Row(
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed('cart', extra: {'title': 'Resumen de venta'});
+              },
               icon: Icon(Icons.shopping_cart, size: 35),
             ),
             ProfileWidget(),

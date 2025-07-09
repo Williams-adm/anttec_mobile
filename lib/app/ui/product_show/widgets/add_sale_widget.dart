@@ -1,3 +1,4 @@
+import 'package:anttec_mobile/core/constants/cart_item.dart';
 import 'package:anttec_mobile/core/styles/colors.dart';
 import 'package:anttec_mobile/core/styles/texts.dart';
 import 'package:anttec_mobile/core/styles/titles.dart';
@@ -38,7 +39,18 @@ class AddSaleWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => {context.goNamed('home')},
+                      onPressed: () => {
+                        cartItems.add({
+                          "brand": "REDRAGON",
+                          "name": "Kumara (K552 RGB-1-SP)",
+                          "stock": "8",
+                          "price": "195.00",
+                          "color": "black",
+                          "image": "assets/img/prueba/p-redragon552.jpg",
+                        }),
+                        Navigator.of(context).pop(),
+                        context.goNamed('home'),
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.tertiaryP,
                         shape: RoundedRectangleBorder(
@@ -59,7 +71,22 @@ class AddSaleWidget extends StatelessWidget {
                   const SizedBox(width: 22),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () {
+                        //eliminar luego cartItems.add
+                        cartItems.add({
+                          "brand": "REDRAGON",
+                          "name": "Kumara (K552 RGB)",
+                          "stock": "8",
+                          "price": "195.00",
+                          "color": "black",
+                          "image": "assets/img/prueba/p-redragon552.jpg",
+                        });
+                        Navigator.of(context).pop();
+                        context.goNamed(
+                          'cart',
+                          extra: {'title': 'Resumen de venta'},
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primaryP,
                         shape: RoundedRectangleBorder(

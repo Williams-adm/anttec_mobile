@@ -60,6 +60,8 @@ flutter:
   assets:
     - assets/img/logo.png
     - assets/img/user.jpg
+    - assets/img/carro-vacio.png
+    - assets/img/sale-empty.png
     #prueba img
     - assets/img/prueba/p-redragon552.jpg
     - assets/img/prueba/p-logitechG335.jpg

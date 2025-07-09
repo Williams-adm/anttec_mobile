@@ -35,7 +35,12 @@ class FooterWidget extends StatelessWidget {
                   ),
                   const SizedBox(width: 90.0), // espacio para el botón central
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.goNamed(
+                        'sale',
+                        extra: {'title': 'Ventas del día'},
+                      );
+                    },
                     icon: Icon(Symbols.order_approve, size: 48.0),
                   ),
                 ],

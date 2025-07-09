@@ -1,9 +1,12 @@
+import 'package:anttec_mobile/app/ui/cart/screens/sale_summary_screens.dart';
 import 'package:anttec_mobile/app/ui/filters/screens/filter_screen.dart';
 import 'package:anttec_mobile/app/ui/home/screens/home_screen.dart';
 import 'package:anttec_mobile/app/ui/layout/screen/layout_base.dart';
 import 'package:anttec_mobile/app/ui/layout/screen/layout_short.dart';
 import 'package:anttec_mobile/app/ui/login/screen/login_screen.dart';
+import 'package:anttec_mobile/app/ui/paid/screens/paid_screen.dart';
 import 'package:anttec_mobile/app/ui/product_show/screens/product_show_screen.dart';
+import 'package:anttec_mobile/app/ui/sale/screens/sale_screen.dart';
 import 'package:anttec_mobile/app/ui/scan/screen/scan_bar_screen.dart';
 import 'package:anttec_mobile/app/ui/splash/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -72,6 +75,24 @@ final GoRouter router = GoRouter(
             final id = state.pathParameters['id'];
             return ProductShowScreen(id: id!);
           },
+        ),
+        GoRoute(
+          name: 'cart',
+          path: '/cart',
+          builder: (BuildContext context, GoRouterState state) =>
+              const SaleSummaryScreens(),
+        ),
+        GoRoute(
+          name: 'sale',
+          path: '/sale',
+          builder: (BuildContext context, GoRouterState state) =>
+              const SaleScreen(),
+        ),
+        GoRoute(
+          name: 'paid',
+          path: '/paid',
+          builder: (BuildContext context, GoRouterState state) =>
+              const PaidScreen(),
         ),
       ],
     ),
