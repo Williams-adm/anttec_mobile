@@ -1,4 +1,10 @@
-import 'package:anttec_mobile/core/styles/texts.dart';
+import 'package:anttec_mobile/app/ui/paid/widgets/buttons_type_voucher.dart';
+import 'package:anttec_mobile/app/ui/paid/widgets/cash_payment_widget.dart';
+import 'package:anttec_mobile/app/ui/paid/widgets/dropdown_select_document_widget.dart';
+import 'package:anttec_mobile/app/ui/paid/widgets/methods_sale_widget.dart';
+import 'package:anttec_mobile/app/ui/paid/widgets/search_client_widget.dart';
+import 'package:anttec_mobile/app/ui/paid/widgets/text_data_widget.dart';
+import 'package:anttec_mobile/app/ui/paid/widgets/type_issue_widget.dart';
 import 'package:flutter/material.dart';
 
 class PaidScreen extends StatelessWidget {
@@ -14,15 +20,13 @@ class PaidScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Seleccione el tipo de comprobante:",
-                style: AppTexts.body1M,
-              ),
-              Text("Seleccione el tipo de documento:", style: AppTexts.body1M),
-              Text("Ingrese el N°:", style: AppTexts.body1M),
-              Text("Nombres y apellidos:", style: AppTexts.body1M),
-              Text("Tipo de emisión:", style: AppTexts.body1M),
-              Text("Método de pago:", style: AppTexts.body1M),
+              ButtonsTypeVoucherWidget(),
+              DropdownSelectDocumentWidget(),
+              SearchClientWidget(),
+              TextDataWidget(),
+              TypeIssueWidget(),
+              MethodsSaleWidget(),
+              CashPaymentWidget(),
             ],
           ),
         ),
