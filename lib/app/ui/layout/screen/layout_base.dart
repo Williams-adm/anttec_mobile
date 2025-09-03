@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class LayoutBase extends StatelessWidget {
   final Widget content;
   final String selectedCategory;
+
   const LayoutBase({
     super.key,
     required this.content,
@@ -21,7 +22,7 @@ class LayoutBase extends StatelessWidget {
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(left: 12.0, right: 12.0, bottom: 6.0),
+          margin: const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 6.0),
           child: Column(
             children: [
               HeaderWidget(),

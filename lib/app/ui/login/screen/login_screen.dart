@@ -1,13 +1,42 @@
-import 'package:anttec_mobile/app/ui/login/widgets/button_login_widget.dart';
-import 'package:anttec_mobile/app/ui/login/widgets/email_input_field_widget.dart';
-import 'package:anttec_mobile/app/ui/login/widgets/password_input_field_widget.dart';
-import 'package:anttec_mobile/app/ui/login/widgets/remember_widget.dart';
 import 'package:anttec_mobile/core/styles/colors.dart';
 import 'package:anttec_mobile/core/styles/titles.dart';
+import 'package:anttec_mobile/services/auth_services.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  bool _isLoading = false;
+
+  Future<void> _login() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+
+    setState(() => _isLoading = true);
+
+    final success = await AuthService.login(email, password);
+
+    setState(() => _isLoading = false);
+
+    if (success) {
+      context.goNamed('home'); // Usa go_router con el nombre de la ruta 'home'
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Credenciales incorrectas o error en login'),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,41 +45,55 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              side: BorderSide(color: Colors.transparent),
-            ),
             color: AppColors.primaryS,
-            margin: EdgeInsets.only(left: 25.0, right: 25.0),
-            elevation: 8.0,
+            margin: const EdgeInsets.symmetric(horizontal: 25),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            elevation: 8,
             child: Padding(
-              padding: EdgeInsetsGeometry.only(
-                right: 25.0,
-                left: 25.0,
-                top: 35.0,
-                bottom: 35.0,
-              ),
-              child: Form(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20.0),
-                      alignment: Alignment.center,
-                      child: Text("Iniciar Sesión", style: AppTitles.login),
+              padding: const EdgeInsets.all(25),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Iniciar Sesión', style: AppTitles.login),
+                  const SizedBox(height: 25),
+                  TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      hintText: 'Correo electrónico',
                     ),
-                    Text("Correo Electrónico", style: AppTitles.h3),
-                    SizedBox(height: 10.0),
-                    EmailInputFieldWidget(),
-                    SizedBox(height: 20.0),
-                    Text("Contraseña", style: AppTitles.h3),
-                    SizedBox(height: 10.0),
-                    PasswordInputFieldWidget(),
-                    RememberWidget(),
-                    ButtonLoginWidget(),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: const InputDecoration(hintText: 'Contraseña'),
+                  ),
+                  const SizedBox(height: 30),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: _isLoading ? null : _login,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryP,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            )
+                          : Text(
+                              'INGRESAR',
+                              style: AppTitles.h1.copyWith(color: Colors.white),
+                            ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
